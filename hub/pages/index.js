@@ -11,7 +11,25 @@ export default function Profile(context) {
     var { id } = router.query
     var id = (id)
     var {data: session}=useSession()
-    if (session) {}else{return(<><Button onClick={signIn}>Sign In</Button></>)}
+    if (session) {}else{return(
+    <>
+    <Head>
+                <title>Profile</title>
+            </Head>
+            <Navbar isBordered isCompact variant="sticky">
+                <Navbar.Brand>
+                    <Text h3 css={{ textGradient: "45deg, $purple600 -20%, $red600 100%"}}>SocialHub</Text>
+                </Navbar.Brand>
+                <Navbar.Content activeColor="secondary">
+                    <Navbar.Item><Button auto bordered color="gradient" onClick={signIn}><Link color="text" href="/buy" onClick={signIn}>Sign In</Link></Button></Navbar.Item>
+                </Navbar.Content>
+            </Navbar>
+            <Spacer y={3}/>
+        <Text h1 css={{"text-align":"center"}}>Please sign in to slack before continuing</Text>
+        <Spacer y={3}></Spacer>
+        <Button onClick={signIn} css={{"margin":"auto"}} size="xl">Sign In</Button>
+    </>
+    )}
     var data=request("GET","http://127.0.0.1:5000/data?name="+session.user.name).body
     var all=JSON.parse(data)
     if (id){}else{var id=0}
