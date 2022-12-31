@@ -9,11 +9,13 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 export default function Profile(context) {
     const router = useRouter()
     var { id } = router.query
-    var id = parseInt(id)
+    var id = (id)
     var {data: session}=useSession()
     if (session) {}else{return(<><Button onClick={signIn}>Sign In</Button></>)}
-    var all=JSON.parse(request("GET","http://127.0.0.1:5000/data?name="+session.user.name).body)
-    if (id===undefined) {id=0}
+    var data=request("GET","http://127.0.0.1:5000/data?name="+session.user.name).body
+    var all=JSON.parse(data)
+    if (id){}else{var id=0}
+    if (typeof id === typeof "") {var id = parseInt(id)}
     var id = id%(all['all'].length)
     if (all['status']==='error') {return(<><Text>Please fill up the survey form</Text></>)}
     var resp=all['all'][id]
@@ -23,7 +25,6 @@ export default function Profile(context) {
     const musicGenre=resp['music']
     const drinkName=resp['drink']
     const match=resp['match']
-    console.log(typeof id)
     return (
         <>
             <Head>
@@ -33,6 +34,9 @@ export default function Profile(context) {
                 <Navbar.Brand>
                     <Text h3 css={{ textGradient: "45deg, $purple600 -20%, $red600 100%"}}>SocialHub</Text>
                 </Navbar.Brand>
+                <Navbar.Content activeColor="secondary">
+                    <Navbar.Item><Button auto bordered color="gradient" onClick={signOut}><Link color="text" href="/buy" onClick={signOut}>Logout</Link></Button></Navbar.Item>
+                </Navbar.Content>
             </Navbar>
             <Spacer y={3}/>
             <Container>
