@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { NextUIProvider } from '@nextui-org/react'
 import { createTheme } from '@nextui-org/react'
+import {SessionProvider} from 'next-auth/react'
 
 const darkTheme = createTheme(
   {
@@ -10,10 +11,12 @@ const darkTheme = createTheme(
     }
   }
 )
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps , session}) {
   return (
-    <NextUIProvider theme={darkTheme}>
-      <Component {...pageProps}/>
-    </NextUIProvider>
+    <SessionProvider session={session}>
+      <NextUIProvider theme={darkTheme}>
+        <Component {...pageProps}/>
+      </NextUIProvider>
+    </SessionProvider>
   )
 }

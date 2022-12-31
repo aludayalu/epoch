@@ -2,6 +2,12 @@ import Head from 'next/head'
 import { Container, Avatar, Card, Navbar, Text, Spacer, Divider, Button, Link} from '@nextui-org/react'
 
 export default function Profile() {
+    const Name="Kody"
+    const colorName="Black"
+    const sportsName="Cricket"
+    const musicGenre="Metal"
+    const drinkName="Coke"
+    const match=10
     return (
         <>
             <Head>
@@ -18,7 +24,7 @@ export default function Profile() {
                 <Spacer y={2}/>
                 <Card isHoverable isPressable css={{"maxWidth":"650px", bgBlur: "#0f111466", "margin-left": "auto", "margin-right": "auto" }}>
                     <Card.Header>
-                        <Text h2 color='secondary' css={{ textGradient: "45deg, $purple600 -20%, $red600 100%"}}>{Name}</Text>
+                        <Text h2 color='secondary' css={{ textGradient: "45deg, $purple600 -20%, $red600 100%"}}>{Name} : {match}% Match</Text>
                     </Card.Header>
                     <Divider/>
                     <Card.Body>
