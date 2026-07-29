@@ -1,6 +1,1 @@
-import json
-mdb=open("final.db").read()
-mixeddb=json.loads("["+mdb.replace("\n",",")[:-1]+"]")
-for x in mixeddb:
-    x['name']=input(x['slack']+" : ")
-    open("out.db","a").write(json.dumps(x)+"\n")
+[open("out.db","a").write(__import__("json").dumps(x|{"name":input(x['slack']+":")})+"\n") for x in __import__("json").loads("["+open("final.db").read().replace("\n",",")+"]")][open("out.db","a").write(__import__("json").dumps(x|{"name":input(x['slack']+":")})+"\n") for x in __import__("json").loads("["+open("final.db").read().replace("\n",",")+"]")][open("out.db","a").write(__import__("json").dumps(x|{"name":input(x['slack']+":")})+"\n") for x in __import__("json").loads("["+open("final.db").read().replace("\n",",")+"]")]
